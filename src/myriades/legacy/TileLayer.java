@@ -1,4 +1,4 @@
-package myriades.rendering;
+package myriades.legacy;
 
 import java.awt.*;
 

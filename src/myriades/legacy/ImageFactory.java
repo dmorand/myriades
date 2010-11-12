@@ -1,19 +1,15 @@
-package myriades.image;
+package myriades.legacy;
 
 import java.awt.*;
 import java.awt.font.*;
 import java.awt.geom.*;
 import java.awt.image.*;
 
-import myriades.def.*;
-
-public final class ImageFactory
-{
+public final class ImageFactory {
     private static final Color TILE_BACKGROUND = new Color(0, 0, 0, 255);
 
-    public Image createImage(char glyph, Color color, Size size)
-    {
-        int pixelSize = getPixelSize(size);
+    public Image createImage(char glyph, Color color) {
+        int pixelSize = 32;
         Font font = new Font("Monospace", Font.BOLD, pixelSize);
 
         FontRenderContext fontRenderContext = new FontRenderContext(null, true, true);
@@ -34,10 +30,5 @@ public final class ImageFactory
         g2d.setColor(color);
         g2d.drawGlyphVector(glyphVector, 0, lineMetrics.getAscent() - lineMetrics.getDescent());
         return image;
-    }
-
-    public int getPixelSize(Size size)
-    {
-        return (size.ordinal() + 1) * 8;
     }
 }
