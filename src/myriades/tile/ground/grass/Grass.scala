@@ -1,11 +1,13 @@
 package myriades.tile.ground.grass
 
-private[grass] final class Grass(id: String) {}
+import myriades.tile._
+
+private[grass] final class Grass(id: String) extends Tile(id) {}
 
 object Grass {
-  val grass1 = Grass("grass1")
-  val grass2 = Grass("grass2")
-  val grass3 = Grass("grass3")
+  val basic1 = Grass("basic-1")
+  val basic2 = Grass("basic-2")
+  val basic3 = Grass("basic-3")
   val flowersBlue1 = Grass("flowers-blue-1")
   val flowersBlue2 = Grass("flowers-blue-2")
   val flowersBlue3 = Grass("flowers-blue-3")

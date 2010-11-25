@@ -1,10 +1,8 @@
 package myriades.tile
 
-import ground._
+import java.awt._
 
-class Tile() {
+class Tile(id: String) {
+  val image = Toolkit.getDefaultToolkit.createImage(getClass.getClassLoader.getResource(id + ".png"))
 }
 
-object Tile {
-  val ground = new Ground();  
-}
