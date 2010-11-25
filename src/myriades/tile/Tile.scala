@@ -2,7 +2,13 @@ package myriades.tile
 
 import java.awt._
 
-class Tile(id: String) {
-  val image = Toolkit.getDefaultToolkit.createImage(getClass.getClassLoader.getResource(id + ".png"))
+import myriades.util._
+
+class Tile(id: String) extends ResourceLocator {  
+  val image = Toolkit.getDefaultToolkit.createImage(getResourceLocation(id + ".png"))
+}
+
+object Tile {
+    val size = 32
 }
 
