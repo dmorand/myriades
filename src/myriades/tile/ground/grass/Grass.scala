@@ -1,5 +1,6 @@
 package myriades.tile.ground.grass
 
+import util.Random._
 import myriades.tile._
 
 private[grass] final class Grass(id: String) extends Tile(id) {}
@@ -30,5 +31,9 @@ object Grass {
   val dirtMix2 = Grass("dirtMix2")
   val dirtMix3 = Grass("dirtMix3")
 
+  def random = {
+    shuffle(List(basic1, basic2, basic3, flowersBlue1, flowersRed1, flowersYellow1)).take(1)(0)
+  }
+  
   private def apply(id: String) = new Grass(id)
 }
