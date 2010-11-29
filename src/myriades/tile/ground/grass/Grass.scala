@@ -5,7 +5,7 @@ import myriades.tile._
 
 private[grass] final class Grass(id: String) extends Tile(id) {}
 
-object Grass {
+object Grass extends TileCategory {
   val basic1 = Grass("basic-1")
   val basic2 = Grass("basic-2")
   val basic3 = Grass("basic-3")
@@ -27,13 +27,17 @@ object Grass {
   val southEast = Grass("south-east")
   val southWest = Grass("south-west")
   val dirt = Grass("dirt")
-  val dirtMix1 = Grass("dirtMix1")
-  val dirtMix2 = Grass("dirtMix2")
-  val dirtMix3 = Grass("dirtMix3")
+  val dirtMix1 = Grass("dirt-mix-1")
+  val dirtMix2 = Grass("dirt-mix-2")
+  val dirtMix3 = Grass("dirt-mix-3")
 
-  def random = {
-    shuffle(List(basic1, basic2, basic3, flowersBlue1, flowersRed1, flowersYellow1)).take(1)(0)
-  }
-  
+  override protected val tiles = List(basic1, basic2, basic3,
+    flowersBlue1, flowersBlue2, flowersBlue3,
+    flowersRed1, flowersRed2, flowersRed3,
+    flowersYellow1, flowersYellow2, flowersYellow3,
+    north, south, east, west,
+    northEast, northWest, southEast, southWest,
+    dirt, dirtMix1, dirtMix2, dirtMix3)
+
   private def apply(id: String) = new Grass(id)
 }
