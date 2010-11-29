@@ -1,6 +1,6 @@
-package myriades.tile.ground.grass
+package myriades.tile.world.grass
 
-import util.Random._
+import myriades.util.Random._
 import myriades.tile._
 
 private[grass] final class Grass(id: String) extends Tile(id) {}

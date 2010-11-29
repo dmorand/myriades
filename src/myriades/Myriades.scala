@@ -3,7 +3,8 @@ package myriades
 import java.awt._
 import javax.swing._
 import tile._
-import tile.ground.grass._
+import tile.world.grass._
+import tile.world.tree._
 
 object Myriades {    
   def main(args: Array[String]): Unit = {
@@ -27,6 +28,7 @@ object MyriadesPanel extends JPanel {
     for (x <- 0 to dimension.width / Tile.size) {
       for (y <- 0 to dimension.height / Tile.size) {
         g.drawImage(Grass.randomTile.image, x * Tile.size, y * Tile.size, null)
+        g.drawImage(Tree.randomTile.image, x * Tile.size, y * Tile.size, null)
       }
     }
   }
