@@ -5,13 +5,11 @@ import javax.swing._
 import tile._
 import tile.ground.grass._
 
-object Myriades {
-  val visibleTiles = 9
-    
+object Myriades {    
   def main(args: Array[String]): Unit = {
     val frame = new JFrame
     frame.setTitle("Myriades")
-    frame.setSize(Tile.size * visibleTiles, Tile.size * visibleTiles)
+    frame.setSize(800, 600)
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
     
     val contentPane = frame.getContentPane
@@ -25,9 +23,10 @@ object Myriades {
 
 object MyriadesPanel extends JPanel {
   override def paint(g: Graphics) = {
-    for (x <- 0 to Myriades.visibleTiles) {
-      for (y <- 0 to Myriades.visibleTiles) {
-        g.drawImage(Grass.random.image, x * Tile.size, y * Tile.size, null)
+    val dimension = getSize()
+    for (x <- 0 to dimension.width / Tile.size) {
+      for (y <- 0 to dimension.height / Tile.size) {
+        g.drawImage(Grass.randomTile.image, x * Tile.size, y * Tile.size, null)
       }
     }
   }
