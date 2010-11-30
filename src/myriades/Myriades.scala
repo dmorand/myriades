@@ -5,6 +5,7 @@ import javax.swing._
 import tile._
 import tile.world.grass._
 import tile.world.tree._
+import world._
 
 object Myriades {    
   def main(args: Array[String]): Unit = {
@@ -27,8 +28,8 @@ object MyriadesPanel extends JPanel {
     val dimension = getSize()
     for (x <- 0 to dimension.width / Tile.size) {
       for (y <- 0 to dimension.height / Tile.size) {
-        g.drawImage(Grass.randomTile.image, x * Tile.size, y * Tile.size, null)
-        g.drawImage(Tree.randomTile.image, x * Tile.size, y * Tile.size, null)
+        val worldUnit = if((x + y) % 3 == 0) WorldUnit(Grass.randomTile) else WorldUnit(Grass.randomTile, Tree.randomTile)   
+        worldUnit.render(g, x, y)
       }
     }
   }
