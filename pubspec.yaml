@@ -1,0 +1,4 @@
+name: myriades
+description: A sample chrome packaged application
+dependencies:
+  browser: any
