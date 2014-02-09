@@ -1,5 +1,6 @@
 import 'dart:html';
 import 'dart:js';
+import 'package:chrome/chrome_app.dart' as chrome;
 
 int boundsChange = 100;
 
@@ -12,18 +13,9 @@ int boundsChange = 100;
 void main() {
   querySelector("#sample_text_id")
     ..text = "Click me!"
-    ..onClick.listen(resizeWindow);
+    ..onClick.listen(doSomething);
 }
 
-void resizeWindow(MouseEvent event) {
-  JsObject appWindow = 
-      context['chrome']['app']['window'].callMethod('current', []);
-  JsObject bounds = appWindow.callMethod('getBounds', []);
-  
-  bounds['width'] += boundsChange;
-  bounds['left'] -= boundsChange ~/ 2;
-  
-  appWindow.callMethod('setBounds', [bounds]);
-  
-  boundsChange *= -1;
+void doSomething(MouseEvent event) {
+  chrome.tts.speak("You clicked me you funny guy!");
 }
