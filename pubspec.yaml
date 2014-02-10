@@ -3,3 +3,4 @@ description: A sample chrome packaged application
 dependencies:
   browser: any
   chrome: any
+  polymer: any
