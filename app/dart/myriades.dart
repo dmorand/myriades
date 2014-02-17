@@ -1,6 +1,13 @@
-import 'package:polymer/polymer.dart';
+import 'dart:html';
+//import 'package:polymer/polymer.dart';
 
 void main() {
-  initPolymer();
+  HttpRequest.getString('../data/arenas.txt').then(onArenasLoaded);
+
+  
+  //initPolymer();
 }
 
+void onArenasLoaded(String responseText) {
+  print(responseText);
+}
