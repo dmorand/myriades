@@ -11,15 +11,13 @@ class TileSet {
   Function _onLoad;
 
   TileSet.load(String filename, [Function onLoad]) {
+    _onLoad = onLoad;
     HttpRequest.getString(filename).then(_parseTileSet);
   }
 
   Tile getTile(String id) {
-    print(id);
-    print(_tiles);
     Tile tile = _tiles[id];
     assert(tile != null);
-    print(tile);
     return tile;
   }
 
@@ -36,9 +34,7 @@ class TileSet {
 
     _image = new ImageElement(src: jsonTileset['filename']);
     if(_onLoad != null) {
-      _image.onLoad.listen(_onLoad);
+      _image.onLoad.listen((image) {_onLoad();_onLoad = null;});
     }
-
-    print(_tiles);
   }
 }

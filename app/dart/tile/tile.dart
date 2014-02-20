@@ -16,8 +16,8 @@ class Tile {
                                                this.y * TILE_SIZE,
                                                TILE_SIZE,
                                                TILE_SIZE,
-                                               x * TILE_SIZE,
-                                               y * TILE_SIZE,
+                                               x * TILE_SIZE * scale,
+                                               y * TILE_SIZE * scale,
                                                TILE_SIZE * scale,
                                                TILE_SIZE * scale);
   }
