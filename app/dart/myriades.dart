@@ -7,10 +7,10 @@ import 'arena/arena-library.dart';
 final int SCALE = 3;
 final int CANVAS_SIZE = SCALE * TILE_SIZE * ARENA_SIZE;
 
-Map<String, Arena> arenas = {};
 CanvasElement arenaCanvas;
 TileSet arenaTileSet;
 //TileSet heroTileSet;
+ArenaLibrary arenaLibrary;
 
 void main() {
   initCanvas();
@@ -34,20 +34,8 @@ loadResources() {
 }
 
 loadArenas([Function onLoad]) {
-  parseArenas(String text) {
-    List<String> lines = text.split('\n');
-
-    while(!lines.isEmpty) {
-      String id = lines.removeAt(0);
-      List<String> arenaText = [];
-      arenaText.addAll(lines.getRange(0, 8));
-      arenas[id] = new Arena.fromText(id, arenaText, arenaTileSet);
-      lines.removeRange(0, 9);
-    }
-  }
-
   onArenaTileSetLoad() {
-    HttpRequest.getString('../data/arenas.txt').then(parseArenas);
+    arenaLibrary = new ArenaLibrary.load('../data/arenas.txt', arenaTileSet);
   }
 
   loadArenaTileSet(onArenaTileSetLoad);
@@ -58,6 +46,7 @@ loadArenaTileSet([Function onLoad]) {
 }
 
 randomArena(MouseEvent event) {
-  String arenaId = arenas.keys.elementAt(new Random().nextInt(arenas.keys.length));
-  arenas[arenaId].render(arenaCanvas, SCALE);
+  Iterable<String> arenaIds = arenaLibrary.getArenaIds();
+  String arenaId = arenaIds.elementAt(new Random().nextInt(arenaIds.length));
+  arenaLibrary.getArena(arenaId).render(arenaCanvas, SCALE);
 }
