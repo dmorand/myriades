@@ -2,7 +2,6 @@ import 'dart:html';
 import 'dart:math';
 import 'tile/tileset.dart';
 import 'arena/arena-library.dart';
-//import 'package:polymer/polymer.dart';
 
 final int SCALE = 3;
 final int CANVAS_SIZE = SCALE * TILE_SIZE * ARENA_SIZE;
@@ -15,7 +14,6 @@ ArenaLibrary arenaLibrary;
 void main() {
   initCanvas();
   loadResources();
-  //initPolymer();
 }
 
 initCanvas() {
@@ -26,7 +24,7 @@ initCanvas() {
   arenaCanvas.context2D.fillStyle = 'black';
   arenaCanvas.context2D.fillRect(0, 0, arenaCanvas.width, arenaCanvas.height);
 
-  arenaCanvas.onClick.listen(randomArena);
+  arenaCanvas.onClick.listen(showRandomArena);
 }
 
 loadResources() {
@@ -45,7 +43,7 @@ loadArenaTileSet([Function onLoad]) {
   arenaTileSet = new TileSet.load('../data/arena-tileset.json', onLoad);
 }
 
-randomArena(MouseEvent event) {
+showRandomArena(MouseEvent event) {
   Iterable<String> arenaIds = arenaLibrary.getArenaIds();
   String arenaId = arenaIds.elementAt(new Random().nextInt(arenaIds.length));
   arenaLibrary.getArena(arenaId).render(arenaCanvas, SCALE);
