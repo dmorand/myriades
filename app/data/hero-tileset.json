@@ -1,0 +1,14 @@
+{
+  "filename" : "../img/hero.png",
+  "tiles" :
+  [
+    {"id" : "demeos",
+     "x" : 16,
+     "y" : 4
+    },
+    {"id" : "metreon",
+     "x" : 12,
+     "y" : 1
+    }
+  ]
+}
