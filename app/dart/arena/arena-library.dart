@@ -8,9 +8,11 @@ part 'arena.dart';
 class ArenaLibrary {
   Map<String, Arena> _arenas = {};
   TileSet _tileSet;
+  Function _onLoad;
 
   ArenaLibrary.load(String filename, TileSet tileSet, [Function onLoad]) {
     _tileSet = tileSet;
+    _onLoad = onLoad;
     HttpRequest.getString(filename).then(_parseArenas);
   }
 
@@ -32,6 +34,11 @@ class ArenaLibrary {
       arenaText.addAll(lines.getRange(0, 8));
       _arenas[id] = new Arena.fromText(id, arenaText, _tileSet);
       lines.removeRange(0, 9);
+    }
+
+    if(_onLoad != null) {
+      _onLoad();
+      _onLoad = null;
     }
   }
 }
