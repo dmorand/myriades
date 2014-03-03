@@ -3,5 +3,13 @@ body {
 }
 
 canvas {
+  position: absolute;
+}
+
+#arena {
+  background-color: blue;
+}
+
+#hero {
   background-color: transparent;
 }

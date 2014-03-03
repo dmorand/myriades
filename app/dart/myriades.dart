@@ -9,6 +9,8 @@ final int CANVAS_SIZE = SCALE * TILE_SIZE * ARENA_SIZE;
 
 CanvasElement arenaCanvas;
 CanvasElement heroCanvas;
+CanvasElement eventCanvas;
+
 TileSet arenaTileSet;
 TileSet heroTileSet;
 ArenaLibrary arenaLibrary;
@@ -22,26 +24,26 @@ void main() {
 initCanvas() {
   initArenaCanvas();
   initHeroCanvas();
+  initEventCanvas();
 }
 
 void initArenaCanvas() {
   arenaCanvas = querySelector("#arena");
   arenaCanvas.width = CANVAS_SIZE;
   arenaCanvas.height = CANVAS_SIZE;
-
-  arenaCanvas.context2D.fillStyle = 'black';
-  arenaCanvas.context2D.fillRect(0, 0, arenaCanvas.width, arenaCanvas.height);
-
-  arenaCanvas.onClick.listen(showRandomArena);
 }
 
 void initHeroCanvas() {
-  heroCanvas = querySelector("#arena");
+  heroCanvas = querySelector("#hero");
   heroCanvas.width = CANVAS_SIZE;
   heroCanvas.height = CANVAS_SIZE;
+}
 
-  heroCanvas.context2D.fillStyle = 'transparent';
-  heroCanvas.context2D.fillRect(0, 0, heroCanvas.width, heroCanvas.height);
+void initEventCanvas() {
+  eventCanvas = querySelector("#event");
+  eventCanvas.width = CANVAS_SIZE;
+  eventCanvas.height = CANVAS_SIZE;
+  eventCanvas.onClick.listen(showRandomArena);
 }
 
 void loadResources() {
