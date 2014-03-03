@@ -75,6 +75,8 @@ void loadHeroTileSet([Function onLoad]) {
 }
 
 void showRandomArena(MouseEvent event) {
+  heroCanvas.context2D.clearRect(0, 0, ARENA_SIZE * TILE_SIZE * SCALE, ARENA_SIZE * TILE_SIZE * SCALE);
+
   Random random = new Random();
   Iterable<String> arenaIds = arenaLibrary.getArenaIds();
   String arenaId = arenaIds.elementAt(random.nextInt(arenaIds.length));
@@ -84,7 +86,6 @@ void showRandomArena(MouseEvent event) {
 
   for(int i = 0; i < 10; i++) {
     if(i != 0) {
-      heroCanvas.context2D.fillStyle = "transparent";
       heroCanvas.context2D.clearRect(x1 * TILE_SIZE * SCALE, y1 * TILE_SIZE * SCALE, TILE_SIZE * SCALE, TILE_SIZE * SCALE);
       heroCanvas.context2D.clearRect(x2 * TILE_SIZE * SCALE, y2 * TILE_SIZE * SCALE, TILE_SIZE * SCALE, TILE_SIZE * SCALE);
     }
