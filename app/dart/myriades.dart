@@ -75,6 +75,13 @@ void showRandomArena(MouseEvent event) {
   Iterable<String> arenaIds = arenaLibrary.getArenaIds();
   String arenaId = arenaIds.elementAt(random.nextInt(arenaIds.length));
   Arena arena = arenaLibrary.getArena(arenaId);
+
+  Iterable<String> heroIds = heroLibrary.getHeroIds();
+  String heroId1 = heroIds.elementAt(random.nextInt(heroIds.length));
+  String heroId2 = heroIds.elementAt(random.nextInt(heroIds.length));
+  Hero hero1 = heroLibrary.getHero(heroId1);
+  Hero hero2 = heroLibrary.getHero(heroId2);
+
   arenaLayer.render(arena, SCALE);
 
   num x1, x2, y1, y2;
@@ -90,7 +97,7 @@ void showRandomArena(MouseEvent event) {
     y1 = random.nextInt(ARENA_SIZE);
     y2 = random.nextInt(ARENA_SIZE);
 
-    heroLibrary.getHero("metreon").render(heroCanvas, x1, y1, SCALE);
-    heroLibrary.getHero("demeos").render(heroCanvas, x2, y2, SCALE);
+    hero1.render(heroCanvas, x1, y1, SCALE);
+    hero2.render(heroCanvas, x2, y2, SCALE);
   }
 }
