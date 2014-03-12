@@ -1,10 +1,4 @@
-library myriades.hero;
-
-import 'dart:convert';
-import 'dart:html';
-import '../tile/tileset.dart';
-
-part 'hero.dart';
+part of myriades.hero;
 
 class HeroLibrary {
   Map<String, Hero> _heroes = {};
