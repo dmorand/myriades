@@ -1,4 +1,10 @@
-part of myriades.arena;
+library myriades.arena;
+
+import 'dart:html';
+import '../tile/tileset.dart';
+
+part 'arena-layer.dart';
+part 'arena-library.dart';
 
 final int ARENA_SIZE = 8;
 

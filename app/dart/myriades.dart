@@ -1,13 +1,13 @@
 import 'dart:html';
 import 'dart:math';
 import 'tile/tileset.dart';
-import 'arena/arena-library.dart';
-import 'hero/hero-library.dart';
+import 'arena/arena.dart';
+import 'hero/hero.dart';
 
 final int SCALE = 3;
 final int CANVAS_SIZE = SCALE * TILE_SIZE * ARENA_SIZE;
 
-CanvasElement arenaCanvas;
+ArenaLayer arenaLayer;
 CanvasElement heroCanvas;
 CanvasElement eventCanvas;
 
@@ -17,33 +17,35 @@ ArenaLibrary arenaLibrary;
 HeroLibrary heroLibrary;
 
 void main() {
-  initCanvas();
+  initLayers();
   loadResources();
 }
 
-initCanvas() {
-  initArenaCanvas();
-  initHeroCanvas();
-  initEventCanvas();
+initLayers() {
+  initArenaLayer();
+  initHeroLayer();
+  initEventLayer();
 }
 
-void initArenaCanvas() {
-  arenaCanvas = querySelector("#arena");
-  arenaCanvas.width = CANVAS_SIZE;
-  arenaCanvas.height = CANVAS_SIZE;
+void initArenaLayer() {
+  CanvasElement arenaCanvas = getCanvas('#arena');
+  arenaLayer = new ArenaLayer(arenaCanvas);
 }
 
-void initHeroCanvas() {
-  heroCanvas = querySelector("#hero");
-  heroCanvas.width = CANVAS_SIZE;
-  heroCanvas.height = CANVAS_SIZE;
+void initHeroLayer() {
+  heroCanvas = getCanvas("#hero");
 }
 
-void initEventCanvas() {
-  eventCanvas = querySelector("#event");
-  eventCanvas.width = CANVAS_SIZE;
-  eventCanvas.height = CANVAS_SIZE;
+void initEventLayer() {
+  eventCanvas = getCanvas("#event");
   eventCanvas.onClick.listen(showRandomArena);
+}
+
+CanvasElement getCanvas(String id) {
+  CanvasElement canvas = querySelector(id);
+  canvas.width = CANVAS_SIZE;
+  canvas.height = CANVAS_SIZE;
+  return canvas;
 }
 
 void loadResources() {
@@ -55,16 +57,12 @@ void loadArenas([Function onLoad]) {
     arenaLibrary = new ArenaLibrary.load('../data/arenas.txt', arenaTileSet, onLoad);
   }
 
-  loadArenaTileSet(onArenaTileSetLoad);
-}
-
-void loadArenaTileSet([Function onLoad]) {
-  arenaTileSet = new TileSet.load('../data/arena-tileset.json', onLoad);
+  arenaTileSet = new TileSet.load('../data/arena-tileset.json', onArenaTileSetLoad);
 }
 
 void loadHeroes() {
   onHeroTileSetLoad() {
-    heroLibrary = new HeroLibrary.load('../data/heroes.json', arenaTileSet);
+    heroLibrary = new HeroLibrary.load('../data/heroes.json', heroTileSet);
   }
 
   loadHeroTileSet(onHeroTileSetLoad);
@@ -80,7 +78,8 @@ void showRandomArena(MouseEvent event) {
   Random random = new Random();
   Iterable<String> arenaIds = arenaLibrary.getArenaIds();
   String arenaId = arenaIds.elementAt(random.nextInt(arenaIds.length));
-  arenaLibrary.getArena(arenaId).render(arenaCanvas, SCALE);
+  Arena arena = arenaLibrary.getArena(arenaId);
+  arenaLayer.render(arena, SCALE);
 
   num x1, x2, y1, y2;
 

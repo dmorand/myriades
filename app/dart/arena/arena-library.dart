@@ -1,9 +1,4 @@
-library myriades.arena;
-
-import 'dart:html';
-import '../tile/tileset.dart';
-
-part 'arena.dart';
+part of myriades.arena;
 
 class ArenaLibrary {
   Map<String, Arena> _arenas = {};
