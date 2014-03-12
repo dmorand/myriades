@@ -21,7 +21,14 @@ class HeroLibrary {
   }
 
   void _parseHeroes(String response) {
+    parseHero(Map jsonHero) {
+      String id = jsonHero['id'];
+      Hero hero = new Hero(id, _tileSet.getTile(id));
+      _heroes[id] = hero;
+    }
+
     List jsonHeroes = JSON.decode(response);
+    jsonHeroes.forEach(parseHero);
 
     if(_onLoad != null) {
       _onLoad();

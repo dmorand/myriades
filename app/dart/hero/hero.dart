@@ -7,6 +7,12 @@ import '../tile/tileset.dart';
 part 'hero-library.dart';
 
 class Hero {
-  String id;
-  Tile tile;
+  String _id;
+  Tile _tile;
+
+  Hero(this._id, this._tile);
+
+  render(CanvasElement canvas, int x, int y, int scale) {
+    _tile.render(canvas, x, y, scale);
+  }
 }

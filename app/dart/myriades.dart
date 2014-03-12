@@ -65,11 +65,7 @@ void loadHeroes() {
     heroLibrary = new HeroLibrary.load('../data/heroes.json', heroTileSet);
   }
 
-  loadHeroTileSet(onHeroTileSetLoad);
-}
-
-void loadHeroTileSet([Function onLoad]) {
-  heroTileSet = new TileSet.load('../data/hero-tileset.json', onLoad);
+  heroTileSet = new TileSet.load('../data/hero-tileset.json', onHeroTileSetLoad);
 }
 
 void showRandomArena(MouseEvent event) {
@@ -94,7 +90,7 @@ void showRandomArena(MouseEvent event) {
     y1 = random.nextInt(ARENA_SIZE);
     y2 = random.nextInt(ARENA_SIZE);
 
-    heroTileSet.getTile("metreon").render(heroCanvas, x1, y1, SCALE);
-    heroTileSet.getTile("demeos").render(heroCanvas, x2, y2, SCALE);
+    heroLibrary.getHero("metreon").render(heroCanvas, x1, y1, SCALE);
+    heroLibrary.getHero("demeos").render(heroCanvas, x2, y2, SCALE);
   }
 }
