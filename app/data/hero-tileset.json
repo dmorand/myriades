@@ -2,13 +2,20 @@
   "filename" : "../img/hero.png",
   "tiles" :
   [
-    {"id" : "demeos",
-     "x" : 16,
-     "y" : 4
-    },
-    {"id" : "metreon",
-     "x" : 12,
-     "y" : 1
-    }
+    {"id" : "demeos", "x" : 16, "y" : 4},
+    {"id" : "taurin", "x" : 13, "y" : 11},
+    {"id" : "chazon", "x" : 8, "y" : 5},
+    {"id" : "feren", "x" : 6, "y" : 0},
+    {"id" : "nirgo", "x" : 8, "y" : 0},
+    {"id" : "cryon", "x" : 2, "y" : 1},
+    {"id" : "lumis", "x" : 14, "y" : 2},
+    {"id" : "phallys", "x" : 2, "y" : 7},
+
+    {"id" : "metreon", "x" : 12, "y" : 1},
+    {"id" : "gehone", "x" : 9, "y" : 8},
+    {"id" : "sehob", "x" : 10, "y" : 0},
+    {"id" : "morgal", "x" : 2, "y" : 2},
+    {"id" : "trom", "x" : 8, "y" : 6},
+    {"id" : "furgor", "x" : 13, "y" : 3}
   ]
 }

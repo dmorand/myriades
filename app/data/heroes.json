@@ -1,4 +1,18 @@
 [
-  { "id" : "demeos"},
-  { "id" : "metreon"}
+  { "id" : "demeos", "team" : "W"},
+  { "id" : "taurin", "team" : "W"},
+  { "id" : "chazon", "team" : "W"},
+  { "id" : "feren", "team" : "W"},
+  { "id" : "nirgo", "team" : "W"},
+  { "id" : "cryon", "team" : "W"},
+  { "id" : "lumis", "team" : "W"},
+  { "id" : "phallys", "team" : "W"},
+
+  { "id" : "metreon", "team" : "B"},
+  { "id" : "sehob", "team" : "B"},
+  { "id" : "gehone", "team" : "B"},
+  { "id" : "morgal", "team" : "B"},
+  { "id" : "trom", "team" : "B"},
+  { "id" : "furgor", "team" : "B"}
+
 ]
