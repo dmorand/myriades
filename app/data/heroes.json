@@ -7,12 +7,21 @@
   { "id" : "cryon", "team" : "W"},
   { "id" : "lumis", "team" : "W"},
   { "id" : "phallys", "team" : "W"},
+  { "id" : "cosmux", "team" : "W"},
+  { "id" : "sed", "team" : "W"},
+  { "id" : "fey", "team" : "W"},
+  { "id" : "rashak", "team" : "W"},
 
   { "id" : "metreon", "team" : "B"},
   { "id" : "sehob", "team" : "B"},
   { "id" : "gehone", "team" : "B"},
   { "id" : "morgal", "team" : "B"},
+  { "id" : "shayed", "team" : "B"},
+  { "id" : "legios", "team" : "B"},
+  { "id" : "scytal", "team" : "B"},
+  { "id" : "dynaz", "team" : "B"},
+  { "id" : "bexone", "team" : "B"},
+  { "id" : "carmione", "team" : "B"},
   { "id" : "trom", "team" : "B"},
   { "id" : "furgor", "team" : "B"}
-
 ]

@@ -10,11 +10,21 @@
     {"id" : "cryon", "x" : 2, "y" : 1},
     {"id" : "lumis", "x" : 14, "y" : 2},
     {"id" : "phallys", "x" : 2, "y" : 7},
+    {"id" : "cosmux", "x" : 11, "y" : 3},
+    {"id" : "sed", "x" : 10, "y" : 4},
+    {"id" : "fey", "x" : 19, "y" : 3},
+    {"id" : "rashak", "x" : 18, "y" : 8},
 
     {"id" : "metreon", "x" : 12, "y" : 1},
     {"id" : "gehone", "x" : 9, "y" : 8},
     {"id" : "sehob", "x" : 10, "y" : 0},
     {"id" : "morgal", "x" : 2, "y" : 2},
+    {"id" : "shayed", "x" : 0, "y" : 8},
+    {"id" : "legios", "x" : 11, "y" : 0},
+    {"id" : "scytal", "x" : 19, "y" : 0},
+    {"id" : "dynaz", "x" : 5, "y" : 0},
+    {"id" : "bexone", "x" : 11, "y" : 1},
+    {"id" : "carmione", "x" : 17, "y" : 9},
     {"id" : "trom", "x" : 8, "y" : 6},
     {"id" : "furgor", "x" : 13, "y" : 3}
   ]
