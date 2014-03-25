@@ -1,15 +1,16 @@
-import 'dart:html';
+import 'dart:html' as html;
 import 'dart:math';
 import 'tile/tileset.dart';
 import 'arena/arena.dart';
 import 'hero/hero.dart';
+import 'event/event.dart';
 
 final int SCALE = 3;
 final int CANVAS_SIZE = SCALE * TILE_SIZE * ARENA_SIZE;
 
 ArenaLayer arenaLayer;
-CanvasElement heroCanvas;
-CanvasElement eventCanvas;
+html.CanvasElement heroCanvas;
+EventLayer eventLayer;
 
 TileSet arenaTileSet;
 TileSet heroTileSet;
@@ -28,7 +29,7 @@ initLayers() {
 }
 
 void initArenaLayer() {
-  CanvasElement arenaCanvas = getCanvas('#arena');
+  html.CanvasElement arenaCanvas = getCanvas('#arena');
   arenaLayer = new ArenaLayer(arenaCanvas);
 }
 
@@ -37,12 +38,13 @@ void initHeroLayer() {
 }
 
 void initEventLayer() {
-  eventCanvas = getCanvas("#event");
-  eventCanvas.onClick.listen(showRandomArena);
+  html.CanvasElement eventCanvas = getCanvas('#event');
+  eventLayer = new EventLayer(eventCanvas, TILE_SIZE * SCALE);
+  eventLayer.addListener(new MyriadesEventListener());
 }
 
-CanvasElement getCanvas(String id) {
-  CanvasElement canvas = querySelector(id);
+html.CanvasElement getCanvas(String id) {
+  html.CanvasElement canvas = html.querySelector(id);
   canvas.width = CANVAS_SIZE;
   canvas.height = CANVAS_SIZE;
   return canvas;
@@ -68,7 +70,7 @@ void loadHeroes() {
   heroTileSet = new TileSet.load('../data/hero-tileset.json', onHeroTileSetLoad);
 }
 
-void showRandomArena(MouseEvent event) {
+void showRandomArena() {
   heroCanvas.context2D.clearRect(0, 0, ARENA_SIZE * TILE_SIZE * SCALE, ARENA_SIZE * TILE_SIZE * SCALE);
 
   Random random = new Random();
@@ -99,5 +101,16 @@ void showRandomArena(MouseEvent event) {
 
     hero1.render(heroCanvas, x1, y1, SCALE);
     hero2.render(heroCanvas, x2, y2, SCALE);
+  }
+}
+
+class MyriadesEventListener extends EventListener {
+  @override
+  void onClick(Point position) {
+    print(position);
+  }
+
+  void onDoubleClick(Point position) {
+    showRandomArena();
   }
 }
