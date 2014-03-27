@@ -3,7 +3,9 @@ library myriades.hero;
 import 'dart:convert';
 import 'dart:html';
 import '../tile/tileset.dart';
+import '../arena/arena.dart';
 
+part 'hero-layer.dart';
 part 'hero-library.dart';
 
 class Hero {

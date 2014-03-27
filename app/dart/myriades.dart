@@ -9,7 +9,7 @@ final int SCALE = 3;
 final int CANVAS_SIZE = SCALE * TILE_SIZE * ARENA_SIZE;
 
 ArenaLayer arenaLayer;
-html.CanvasElement heroCanvas;
+HeroLayer heroLayer;
 EventLayer eventLayer;
 
 TileSet arenaTileSet;
@@ -23,23 +23,11 @@ void main() {
 }
 
 initLayers() {
-  initArenaLayer();
-  initHeroLayer();
-  initEventLayer();
-}
+  arenaLayer = new ArenaLayer(getCanvas('#arena'));
 
-void initArenaLayer() {
-  html.CanvasElement arenaCanvas = getCanvas('#arena');
-  arenaLayer = new ArenaLayer(arenaCanvas);
-}
+  heroLayer = new HeroLayer(getCanvas('#hero'), SCALE);
 
-void initHeroLayer() {
-  heroCanvas = getCanvas("#hero");
-}
-
-void initEventLayer() {
-  html.CanvasElement eventCanvas = getCanvas('#event');
-  eventLayer = new EventLayer(eventCanvas, TILE_SIZE * SCALE);
+  eventLayer = new EventLayer(getCanvas('#event'), TILE_SIZE * SCALE);
   eventLayer.addListener(new MyriadesEventListener());
 }
 
@@ -71,12 +59,11 @@ void loadHeroes() {
 }
 
 void showRandomArena() {
-  heroCanvas.context2D.clearRect(0, 0, ARENA_SIZE * TILE_SIZE * SCALE, ARENA_SIZE * TILE_SIZE * SCALE);
-
   Random random = new Random();
   Iterable<String> arenaIds = arenaLibrary.getArenaIds();
   String arenaId = arenaIds.elementAt(random.nextInt(arenaIds.length));
   Arena arena = arenaLibrary.getArena(arenaId);
+  arenaLayer.render(arena, SCALE);
 
   Iterable<String> heroIds = heroLibrary.getHeroIds();
   String heroId1 = heroIds.elementAt(random.nextInt(heroIds.length));
@@ -84,23 +71,11 @@ void showRandomArena() {
   Hero hero1 = heroLibrary.getHero(heroId1);
   Hero hero2 = heroLibrary.getHero(heroId2);
 
-  arenaLayer.render(arena, SCALE);
-
-  num x1, x2, y1, y2;
+  heroLayer.clear();
 
   for(int i = 0; i < 10; i++) {
-    if(i != 0) {
-      heroCanvas.context2D.clearRect(x1 * TILE_SIZE * SCALE, y1 * TILE_SIZE * SCALE, TILE_SIZE * SCALE, TILE_SIZE * SCALE);
-      heroCanvas.context2D.clearRect(x2 * TILE_SIZE * SCALE, y2 * TILE_SIZE * SCALE, TILE_SIZE * SCALE, TILE_SIZE * SCALE);
-    }
-
-    x1 = random.nextInt(ARENA_SIZE);
-    x2 = random.nextInt(ARENA_SIZE);
-    y1 = random.nextInt(ARENA_SIZE);
-    y2 = random.nextInt(ARENA_SIZE);
-
-    hero1.render(heroCanvas, x1, y1, SCALE);
-    hero2.render(heroCanvas, x2, y2, SCALE);
+    heroLayer.moveHero(hero1, new Point(random.nextInt(ARENA_SIZE), random.nextInt(ARENA_SIZE)));
+    heroLayer.moveHero(hero2, new Point(random.nextInt(ARENA_SIZE), random.nextInt(ARENA_SIZE)));
   }
 }
 
@@ -110,6 +85,7 @@ class MyriadesEventListener extends EventListener {
     print(position);
   }
 
+  @override
   void onDoubleClick(Point position) {
     showRandomArena();
   }
