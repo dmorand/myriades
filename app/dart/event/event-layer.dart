@@ -24,7 +24,7 @@ class EventLayer {
 
   Point getPosition(MouseEvent event) {
     num x = event.client.x / _tileSize;
-    num y = event.client.x / _tileSize;
+    num y = event.client.y / _tileSize;
     return new Point(x.floor(), y.floor());
   }
 }
