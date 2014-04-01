@@ -1,15 +1,17 @@
 import 'dart:html' as html;
 import 'dart:math';
-import 'tile/tileset.dart';
+import 'tile/tile.dart';
 import 'arena/arena.dart';
 import 'hero/hero.dart';
 import 'event/event.dart';
+import 'range/range.dart';
 
 final int SCALE = 3;
 final int CANVAS_SIZE = SCALE * TILE_SIZE * ARENA_SIZE;
 
 ArenaLayer arenaLayer;
 HeroLayer heroLayer;
+RangeLayer rangeLayer;
 EventLayer eventLayer;
 
 TileSet arenaTileSet;
@@ -26,6 +28,8 @@ initLayers() {
   arenaLayer = new ArenaLayer(getCanvas('#arena'));
 
   heroLayer = new HeroLayer(getCanvas('#hero'), SCALE);
+
+  rangeLayer = new RangeLayer(getCanvas('#range'), SCALE);
 
   eventLayer = new EventLayer(getCanvas('#event'), TILE_SIZE * SCALE);
   eventLayer.addListener(new MyriadesEventListener());
@@ -80,9 +84,22 @@ void showRandomArena() {
 }
 
 class MyriadesEventListener extends EventListener {
+  Hero _selectedHero;
+
   @override
   void onClick(Point position) {
     print(position);
+
+    Hero hero = heroLayer.getHero(position);
+    if(hero != null) {
+      _selectedHero = hero;
+      print(hero.id);
+    } else if(_selectedHero != null) {
+      heroLayer.moveHero(_selectedHero, position);
+      _selectedHero = null;
+    } else {
+      _selectedHero = null;
+    }
   }
 
   @override
