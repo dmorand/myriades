@@ -1,4 +1,9 @@
-part of myriades.tiles;
+library myriades.tile;
+
+import 'dart:convert';
+import 'dart:html';
+
+part 'tileset.dart';
 
 final int TILE_SIZE = 32;
 

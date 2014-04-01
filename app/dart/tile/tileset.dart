@@ -1,9 +1,4 @@
-library myriades.tiles;
-
-import 'dart:convert';
-import 'dart:html';
-
-part 'tile.dart';
+part of myriades.tile;
 
 class TileSet {
   Map<String, Tile> _tiles = {};

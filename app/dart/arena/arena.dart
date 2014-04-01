@@ -1,7 +1,7 @@
 library myriades.arena;
 
 import 'dart:html';
-import '../tile/tileset.dart';
+import '../tile/tile.dart';
 
 part 'arena-layer.dart';
 part 'arena-library.dart';
