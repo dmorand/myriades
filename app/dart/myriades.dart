@@ -63,6 +63,9 @@ void loadHeroes() {
 }
 
 void showRandomArena() {
+  heroLayer.clear();
+  rangeLayer.clear();
+
   Random random = new Random();
   Iterable<String> arenaIds = arenaLibrary.getArenaIds();
   String arenaId = arenaIds.elementAt(random.nextInt(arenaIds.length));
@@ -75,8 +78,6 @@ void showRandomArena() {
   Hero hero1 = heroLibrary.getHero(heroId1);
   Hero hero2 = heroLibrary.getHero(heroId2);
 
-  heroLayer.clear();
-
   for(int i = 0; i < 10; i++) {
     heroLayer.moveHero(hero1, new Point(random.nextInt(ARENA_SIZE), random.nextInt(ARENA_SIZE)));
     heroLayer.moveHero(hero2, new Point(random.nextInt(ARENA_SIZE), random.nextInt(ARENA_SIZE)));
@@ -88,22 +89,24 @@ class MyriadesEventListener extends EventListener {
 
   @override
   void onClick(Point position) {
-    print(position);
-
     Hero hero = heroLayer.getHero(position);
     if(hero != null) {
       _selectedHero = hero;
+      rangeLayer.setRange(hero.range, position);
       print(hero.id);
-    } else if(_selectedHero != null) {
+    } else if(_selectedHero != null && rangeLayer.isInRange(position)) {
       heroLayer.moveHero(_selectedHero, position);
+      rangeLayer.clear();
       _selectedHero = null;
     } else {
       _selectedHero = null;
+      rangeLayer.clear();
     }
   }
 
   @override
   void onDoubleClick(Point position) {
+    _selectedHero = null;
     showRandomArena();
   }
 }
