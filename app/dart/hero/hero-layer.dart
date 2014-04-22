@@ -1,16 +1,16 @@
 part of myriades.hero;
 
 class HeroLayer {
-  CanvasElement _canvas;
+  html.CanvasElement _canvas;
   int _scale;
-  Map<Hero, Point> _positions = {};
-  Map<Point, Hero> _heroes = {};
+  Map<Hero, html.Point> _positions = {};
+  Map<html.Point, Hero> _heroes = {};
 
   HeroLayer(this._canvas, this._scale);
 
-  void moveHero(Hero hero, Point position) {
+  void moveHero(Hero hero, html.Point position) {
     if(_positions.containsKey(hero)) {
-      Point oldPosition = _positions[hero];
+      html.Point oldPosition = _positions[hero];
       _canvas.context2D.clearRect(oldPosition.x * TILE_SIZE * _scale, oldPosition.y * TILE_SIZE * _scale, TILE_SIZE * _scale, TILE_SIZE * _scale);
       _heroes[oldPosition] = null;
     }
@@ -26,7 +26,7 @@ class HeroLayer {
     _heroes.clear();
   }
 
-  Hero getHero(Point position) {
+  Hero getHero(html.Point position) {
     return _heroes[position];
   }
 }

@@ -8,7 +8,7 @@ class HeroLibrary {
   HeroLibrary.load(String filename, TileSet tileSet, [Function onLoad]) {
     _tileSet = tileSet;
     _onLoad = onLoad;
-    HttpRequest.getString(filename).then(_parseHeroes);
+    html.HttpRequest.getString(filename).then(_parseHeroes);
   }
 
   Iterable<String> getHeroIds() {
@@ -23,7 +23,8 @@ class HeroLibrary {
   void _parseHeroes(String response) {
     parseHero(Map jsonHero) {
       String id = jsonHero['id'];
-      Hero hero = new Hero(id, _tileSet.getTile(id));
+      Map jsonRange = jsonHero['range'];
+      Hero hero = new Hero(id, parseRange(jsonRange), _tileSet.getTile(id));
       _heroes[id] = hero;
     }
 

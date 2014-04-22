@@ -1,27 +1,123 @@
 [
-  { "id" : "demeos", "team" : "W"},
-  { "id" : "taurin", "team" : "W"},
-  { "id" : "chazon", "team" : "W"},
-  { "id" : "feren", "team" : "W"},
-  { "id" : "nirgo", "team" : "W"},
-  { "id" : "cryon", "team" : "W"},
-  { "id" : "lumis", "team" : "W"},
-  { "id" : "phallys", "team" : "W"},
-  { "id" : "cosmux", "team" : "W"},
-  { "id" : "sed", "team" : "W"},
-  { "id" : "fey", "team" : "W"},
-  { "id" : "rashak", "team" : "W"},
+  {
+    "id" : "demeos",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "taurin",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "chazon",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "feren",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "nirgo",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "cryon",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "lumis",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "phallys",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "cosmux",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "sed",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "fey",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "rashak",
+    "team" : "W",
+    "range" : {"type" : "linear", "min" : 1, "max" : 3}
+  },
 
-  { "id" : "metreon", "team" : "B"},
-  { "id" : "sehob", "team" : "B"},
-  { "id" : "gehone", "team" : "B"},
-  { "id" : "morgal", "team" : "B"},
-  { "id" : "shayed", "team" : "B"},
-  { "id" : "legios", "team" : "B"},
-  { "id" : "scytal", "team" : "B"},
-  { "id" : "dynaz", "team" : "B"},
-  { "id" : "bexone", "team" : "B"},
-  { "id" : "carmione", "team" : "B"},
-  { "id" : "trom", "team" : "B"},
-  { "id" : "furgor", "team" : "B"}
+  {
+    "id" : "metreon",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "sehob",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "gehone",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "morgal",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "shayed",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "legios",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "scytal",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "dynaz",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "bexone",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "carmione",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "trom",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  },
+  {
+    "id" : "furgor",
+    "team" : "B",
+    "range" : {"type" : "diagonal", "min" : 1, "max" : 3}
+  }
 ]
